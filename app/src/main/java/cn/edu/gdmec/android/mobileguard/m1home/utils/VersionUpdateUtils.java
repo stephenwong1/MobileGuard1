@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
@@ -82,9 +83,9 @@ public class VersionUpdateUtils {
             versionEntity.decription = jsonObject.getString("des");
             versionEntity.apkurl = jsonObject.getString("apkurl");
             if(!mVersion.equals(versionEntity.versioncode)){
-                System.out.println(versionEntity.decription);
-                DownloadUtils downloadUtils = new DownloadUtils();
-                downloadUtils.downloadApk(versionEntity.apkurl,"mobileguard.apk",context);
+
+
+
                 handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
             }
         }
@@ -104,6 +105,13 @@ public class VersionUpdateUtils {
         builder.setPositiveButton("立即升级", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+            downloadNewApk(versionEntity.apkurl);
+            }
+        });
+        builder.setNegativeButton("暂不升级",new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 enterHome();
             }
@@ -111,6 +119,7 @@ public class VersionUpdateUtils {
         builder.show();
     }
     private  void enterHome(){
+
         handler.sendEmptyMessage(MESSAGE_ENTERHOME);
     }
     private  void downloadNewApk(String apkurl){
