@@ -45,7 +45,7 @@ public abstract class BaseSetupActivity extends AppCompatActivity{
                     return true;
                 }
 
-                if ((e2.getRawX() - e1.getRawX()) < 200) {
+                if ((e2.getRawX() - e1.getRawX()) > 200) {
                     showPre();
                     overridePendingTransition(R.anim.pre_in, R.anim.pre_out);
                     return true;
