@@ -20,7 +20,7 @@ try{
     byte b :result)
 
     {
-        int number = b & 0xff;
+        int number = b&0xff;
         String hex = Integer.toHexString(number);
         if (hex.length() == 1) {
             sb.append("0" + hex);

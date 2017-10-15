@@ -8,14 +8,16 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPaswrodDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
+
 import cn.edu.gdmec.android.mobileguard.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -24,7 +26,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private SharedPreferences msharedPreferences;
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -104,13 +105,14 @@ public class HomeActivity extends AppCompatActivity {
         mInPswdDialog.setCallBack(new InterPasswordDialog.MyCallBack(){
             public  void  confirm(){
                 if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
-                    Toast.makeText(HomeActivity.this,"密码不能为空！",0).show();
+                    Toast.makeText(HomeActivity.this,"密码不能为空！",Toast.LENGTH_LONG).show();
                 }else if(password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                     mInPswdDialog.dismiss();
+                    startActivity(LostFindActivity.class);
                     Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
                 }else{
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this,"密码有误，请重新输入！",0).show();
+                    Toast.makeText(HomeActivity.this,"密码有误，请重新输入！",Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -141,4 +143,3 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 }
-

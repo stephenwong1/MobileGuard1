@@ -27,7 +27,7 @@ public class SetupPaswrodDialog extends Dialog implements View.OnClickListener {
         initView();
     }
 
-    public  SetupPaswrodDialog(@NonNull Context context){
+    public SetupPaswrodDialog(@NonNull Context context){
         super(context,R.style.dialog_custom);
     }
 

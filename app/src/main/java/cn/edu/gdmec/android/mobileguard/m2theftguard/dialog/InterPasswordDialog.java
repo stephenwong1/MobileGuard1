@@ -40,6 +40,8 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener 
         mTitleTV = (TextView) findViewById(R.id.tv_interpwd_title);
         mInterET = (EditText) findViewById(R.id.et_inter_password);
         mOKBtn = (Button) findViewById(R.id.btn_comfirm);
+        mCancleBtn = (Button) findViewById(R.id.btn_dismiss) ;
+        mOKBtn.setOnClickListener(this);
         mCancleBtn.setOnClickListener(this);
     }
 
