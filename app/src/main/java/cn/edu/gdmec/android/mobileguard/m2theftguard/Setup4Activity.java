@@ -8,7 +8,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 /**
  * Created by hitma on 2017/10/15.
  */
-
+//fds
 public class Setup4Activity extends BaseSetupActivity {
 
     protected  void onCreate(Bundle savedInstanceState){
