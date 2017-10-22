@@ -21,7 +21,7 @@ public class ContactInfoParser {
         ContentResolver resolver = context.getContentResolver();
 
         Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
-        Uri datauri = uri.parse("content://com.android.contacts/data");
+        Uri datauri = Uri.parse("content://com.android.contacts/data");
         List<ContactInfo> infos = new ArrayList<ContactInfo>();
         Cursor cursor = resolver.query(uri,new String[]{"contact_id"},
                 null,null,null);
@@ -46,7 +46,7 @@ public class ContactInfoParser {
                         info.phone = data1;
                     }
                 }
-                if (TextUtils.isEmpty(info.name)&& TextUtils.isEmpty(info.phone))
+                if (TextUtils.isEmpty(info.name) && TextUtils.isEmpty(info.phone))
                     continue;
                 infos.add(info);
                 dataCursor.close();
