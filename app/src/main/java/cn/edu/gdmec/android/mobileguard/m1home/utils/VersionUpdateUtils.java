@@ -1,7 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m1home.utils;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +19,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
@@ -98,7 +96,7 @@ public class VersionUpdateUtils {
     }
     private  void showUpdateDialog(final VersionEntity versionEntity){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("检查到新版本:"+versionEntity.versioncode);
+       /* builder.setTitle("检查到新版本:"+versionEntity.versioncode);
         builder.setMessage(versionEntity.decription);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
@@ -113,9 +111,10 @@ public class VersionUpdateUtils {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                enterHome();
+               enterHome();
             }
-        });
+        });*/
+        enterHome();
         builder.show();
     }
     private  void enterHome(){
