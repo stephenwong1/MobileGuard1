@@ -6,7 +6,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +54,85 @@ public class AppInfoParser {
                 appinfo.isUerApp = true;
             }
 
-            String time = String.valueOf(packInfo.firstInstallTime);
-            appinfo.installTime = time;
+           long time = packInfo.firstInstallTime;
 
-            appinfos.add(appinfo);
-            appinfo = null;
+            int timezone = 8;
+            long totalSeconds = time / 1000;
+            totalSeconds += 60*60 * timezone;
+            int second = (int) (totalSeconds % 60);
+            long totalMinutes = totalSeconds / 60;
+            int minute = (int) (totalMinutes % 60);
+            long totalHours = totalMinutes / 60;
+            int hour = (int) (totalHours % 24);
+            int totalDays = (int) (totalHours / 24);
+            int _year = 1970;
+            int year = _year +totalDays / 366;
+            int month = 1;
+            int day = 1;
+            int diffDays;
+            boolean leapYear;
+            String str;
+            while (true){
+                int diff = (year - _year)* 365;
+                diff +=(year - 1) / 4 - (_year -1)/4;
+                diff -=((year - 1) / 100 - (_year -1) /100);
+                diff +=(year -1) /400 - (_year - 1)/400;
+                diffDays = totalDays - diff;
+                leapYear = (year % 4 == 0)&&(year % 100 !=0) || (year % 400 ==0);
+                if(!leapYear && diffDays <365 || leapYear && diffDays <360){
+                    break;
+                }else {
+                    year++;
+                }
+            }
+             int[] monthDays;
+            if (diffDays >= 59 && leapYear){
+                monthDays = new int[] {-1,0,31,60,91,121,152,182,213,244,274,385,335};
+
+            }else {
+                monthDays = new int[] {-1,0,31,59,90,120,151,181,212,243,273,304,334};
+            }
+            for (int i = monthDays.length - 1;i >= 1;i--){
+                if (diffDays >= monthDays[i]){
+                    month = i;
+                    day = diffDays - monthDays[i] + 1;
+                    break;
+                }
+            }
+            if (hour <12){
+                str = year + "年" + month +"月" + day + "日" + "上午" + hour +":" +minute +":" +second;
+            }else if (hour < 18){
+                str = year + "年" + month +"月" + day + "日" + "上午" + hour +":" +minute +":" +second;
+            }else {
+
+
+                try{
+                    packInfo = pm.getPackageInfo(packname,PackageManager.GET_SIGNATURES);
+                    byte[] b = packInfo.signatures[0].toByteArray();
+                    CertificateFactory cf = CertificateFactory.getInstance("x,509");
+                    X509Certificate cert = (X509Certificate) cf.generateCertificate(
+                            new ByteArrayInputStream(b));
+                    appinfo.certificateIssuer = cert.getIssuerDN().toString() + "\n";
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                } catch (CertificateException e) {
+                    e.printStackTrace();
+                }
+
+                try{
+                    packInfo = pm.getPackageInfo(packname,PackageManager.GET_PERMISSIONS);
+                    if(packInfo.requestedPermissions != null){
+                        for (String pio : packInfo.requestedPermissions){
+                            appinfo.appPermissions = appinfo.appPermissions + pio +"\n";
+                        }
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                appinfos.add(appinfo);
+                appinfo = null;
+            }
         }
         return appinfos;
     }
