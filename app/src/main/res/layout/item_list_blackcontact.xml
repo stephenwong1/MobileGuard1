@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_black_name2"
+        android:id="@+id/tv_black_type"
         style="@style/textview14sp"
         android:layout_toRightOf="@+id/view_black_icon"
         android:layout_below="@+id/tv_black_mode"
