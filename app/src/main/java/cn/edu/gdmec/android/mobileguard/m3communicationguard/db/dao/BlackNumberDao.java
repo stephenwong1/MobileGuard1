@@ -14,7 +14,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.BlackNumberOpenH
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
 /**
- * Created by hitma on 2017/11/5. davvd
+ * Created by hitma on 2017/11/5. dasvvd
  */
 
 public class BlackNumberDao {
