@@ -8,7 +8,7 @@ public class BlackContactInfo {
     public String phoneNumber;
     public  String contactName;
 
-    public  String blackType;
+   /** public  String blackType; */
 
     /**黑名单拦截模式*/
     public  int mode;

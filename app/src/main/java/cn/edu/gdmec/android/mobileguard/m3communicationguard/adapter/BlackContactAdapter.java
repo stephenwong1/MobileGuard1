@@ -26,7 +26,7 @@ public class BlackContactAdapter extends BaseAdapter {
     class ViewHolder{
         TextView mNameTV;
         TextView mModeTV;
-        TextView mTypeTV;
+       /** TextView mTypeTV;*/
         View mContactImgv;
         View mDeleteView;
     }
@@ -66,16 +66,11 @@ public class BlackContactAdapter extends BaseAdapter {
         if(view == null){
             view = View.inflate(context, R.layout.item_list_blackcontact,null);
             holder = new ViewHolder();
-            holder.mNameTV = (TextView) view
-                    .findViewById(R.id.tv_black_name);
-            holder.mTypeTV = (TextView) view
-                    .findViewById(R.id.tv_black_type);
-            holder.mModeTV = (TextView) view
-                    .findViewById(R.id.tv_black_mode);
-            holder.mContactImgv = view
-                    .findViewById(R.id.view_black_icon);
-            holder.mDeleteView = view
-                    .findViewById(R.id.view_black_delete);
+            holder.mNameTV = (TextView) view.findViewById(R.id.tv_black_name);
+           /** holder.mTypeTV = (TextView) view.findViewById(R.id.tv_black_type); */
+            holder.mModeTV = (TextView) view.findViewById(R.id.tv_black_mode);
+            holder.mContactImgv = view.findViewById(R.id.view_black_icon);
+            holder.mDeleteView = view.findViewById(R.id.view_black_delete);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -84,13 +79,13 @@ public class BlackContactAdapter extends BaseAdapter {
         + contactInfos.get(i).phoneNumber + ")");
         holder.mModeTV.setText(contactInfos.get(i).getModeString(
                 contactInfos.get(i).mode));
-        holder.mTypeTV.setText(contactInfos.get(i).blackType);
+       /** holder.mTypeTV.setText(contactInfos.get(i).blackType);*/
         holder.mNameTV.setTextColor(context.getResources().getColor(
                 R.color.bright_purple));
         holder.mModeTV.setTextColor(context.getResources().getColor(
                 R.color.bright_purple));
-        holder.mTypeTV.setTextColor(context.getResources().getColor(
-                R.color.bright_purple));
+       /** holder.mTypeTV.setTextColor(context.getResources().getColor(
+                R.color.bright_purple)); */
         holder.mContactImgv
                 .setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener(){
