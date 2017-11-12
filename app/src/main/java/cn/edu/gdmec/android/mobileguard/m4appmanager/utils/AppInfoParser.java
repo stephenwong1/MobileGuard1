@@ -54,6 +54,9 @@ public class AppInfoParser {
                 appinfo.isUerApp = true;
             }
 
+            String appVersion = packInfo.versionName;
+            appinfo.appVersion = appVersion;
+
             long time = packInfo.firstInstallTime;
 
             int timezone = 8;
