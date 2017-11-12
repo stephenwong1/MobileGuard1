@@ -66,10 +66,10 @@ public class EngineUtils {
 
         bulider.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                switch (i) {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        dialogInterface.dismiss();
+
                         break;
                 }
             }

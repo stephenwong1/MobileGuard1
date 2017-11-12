@@ -194,7 +194,7 @@ public class AppManagerAdapter extends BaseAdapter {
                     EngineUtils.uninstallApplication(context,appInfo);
                     break;
                 case R.id.tv_about_app:
-                    EngineUtils.showAboutDialog(context , appInfo);
+                    EngineUtils.showAboutDialog(context,appInfo);
                     break;
             }
         }
