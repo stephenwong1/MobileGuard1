@@ -25,7 +25,7 @@ import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
 
 /**
- * Created by Administrator on 2017/11/16...
+ * Created by Administrator on 2017/11/16....
  */
 
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener {
