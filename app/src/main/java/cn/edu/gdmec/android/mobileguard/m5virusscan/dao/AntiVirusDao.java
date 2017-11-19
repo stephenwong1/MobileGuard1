@@ -5,36 +5,41 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by hitma on 2017/11/19.
+ * Created by Administrator on 2017/11/16.
  */
 
 public class AntiVirusDao {
-    /**
-     * 检查某个MD5是否是病毒
-     * @param MD5
-     * @return null 代表扫描安全
-     */
     private static Context context;
-    private  static  String dbname;
+    private static String dbname;
     public AntiVirusDao(Context context){
-        this.context = context;
-        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
+        this.context =context;
+        dbname ="/data/data/"+context.getPackageName()+"/files/antivirus.db";
     }
-
-    //使用apk文件的MD5值匹配病毒数据库
-    public  String checkVirus(String md5){
+    public String checkVirus(String md5) {
         String desc = null;
-        //打开数据库
         SQLiteDatabase db = SQLiteDatabase.openDatabase(
-                dbname,null,
+                dbname, null,
                 SQLiteDatabase.OPEN_READONLY);
         Cursor cursor = db.rawQuery("select desc from datable where md5=?",
-                new String[]{md5});
-        if(cursor.moveToNext()){
+                new String[] { md5 });
+        if (cursor.moveToNext()) {
             desc = cursor.getString(0);
         }
         cursor.close();
         db.close();
-        return  desc;
+        return desc;
+    }
+    public String getVirusDbVersion(){
+        String dbVersion = null;
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                dbname, null,
+                SQLiteDatabase.OPEN_READONLY);
+        Cursor cursor = db.rawQuery("select major||'.'||minor||'.'||build from version",null);
+        if (cursor.moveToNext()) {
+            dbVersion = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return dbVersion;
     }
 }
