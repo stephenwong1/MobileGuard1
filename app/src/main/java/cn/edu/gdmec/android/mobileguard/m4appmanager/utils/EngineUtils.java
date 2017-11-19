@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
@@ -42,7 +45,7 @@ public class EngineUtils {
         Intent intent = new Intent();
         intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setData(Uri.parse("packge:"+ appInfo.packageName));
+        intent.setData(Uri.parse("package:"+ appInfo.packageName));
         context.startActivity(intent);
     }
 
@@ -74,7 +77,29 @@ public class EngineUtils {
                 }
             }
         });
+
+
         AlertDialog dialog = bulider.create();
         dialog.show();
     }
+
+    public static  void showActivityDialog(Context context,AppInfo appInfo){
+        try {
+            PackageManager packageManager = context . getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(appInfo.packageName,PackageManager.GET_ACTIVITIES);
+
+            AlertDialog builder = new AlertDialog.Builder(context).setTitle(appInfo.appName).
+                    setMessage(appInfo.appName+"\n"+"Activities:"+"\n"+ Arrays.toString(packageInfo.activities))
+                    .setNegativeButton("返回",new DialogInterface.OnClickListener(){
+
+                        public void onClick(DialogInterface dialog , int which){
+
+                        }
+                    }).show();
+
+        }catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
+    }
 }
+
