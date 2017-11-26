@@ -64,7 +64,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     }
 
     /***
-     * 初始化数据
+     * 初始化数据.
      */
 
     private void initData(){
