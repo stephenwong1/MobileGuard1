@@ -1,12 +1,12 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import cn.edu.gdmec.android.mobileguard.R;
@@ -24,7 +23,7 @@ import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
 
 /**
- * Created by Administrator on 2017/11/16.
+ * Created by Administrator on 2017/11/16......
  */
 
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,7 +77,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     }
     /**
      * 拷贝病毒数据库
-     * @param String
+     * @param
      */
     private void copyDB(final String dbname,final String fromPath) {
         //大文件的拷贝复制一定要用线程，否则很容易出现ANR
@@ -127,6 +126,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setImageResource(R.drawable.back);
         mLastTimeTV = (TextView) findViewById(R.id.tv_lastscantime);
         findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
+        findViewById(R.id.rl_cloudscanvirus).setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -137,6 +137,10 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             case R.id.rl_allscanvirus:
                 startActivity(new Intent(this,VirusScanSpeedActivity.class));
                 break;
+            case R.id.rl_cloudscanvirus:
+                Intent intent = new Intent(this,VirusScanSpeedActivity.class);
+                intent.putExtra("cloud",true);
+                startActivity(intent);
         }
     }
 }

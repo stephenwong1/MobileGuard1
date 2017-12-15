@@ -9,19 +9,18 @@ import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
 
 public class SplashActivity extends AppCompatActivity {
-    private String mVersion;
-    private TextView mVersionTV;
-
+    private TextView mTvVersion;
+    private  String mVersion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         mVersion = MyUtils.getVersion(getApplicationContext());
-        mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
-        mVersionTV.setText("版本号:"+mVersion);
-//        VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
-//            @Override
+        mTvVersion = (TextView) findViewById(R.id.tv_splash_version);
+        mTvVersion.setText("版本号"+mVersion);
+      //  VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
+            //            @Override
 //            public void afterDownload(String filename) {
 //                MyUtils.installApk(SpalshActivity.this,filename);
 //            }
@@ -38,4 +37,3 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 }
-
