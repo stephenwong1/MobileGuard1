@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.NumBelongtoDao;
+import cn.edu.gdmec.android.mobileguard.m9advancetools.db.dao.NumBelongtoDao;
 
 public class NumBelongtoActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText mNumET;
