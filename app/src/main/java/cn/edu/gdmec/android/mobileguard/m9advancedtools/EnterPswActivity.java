@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5utils;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
 public class EnterPswActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView mAppIcon;
@@ -70,7 +70,7 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }else{
                     if(!TextUtils.isEmpty(password)){
-                        if(MD5utils.encode(inputpsw).equals(password)){
+                        if(MD5Utils.encode(inputpsw).equals(password)){
                             //发送自定义的广播消息。
                             Intent intent = new Intent();
                             intent.setAction(App.APPLOCK_ACTION);

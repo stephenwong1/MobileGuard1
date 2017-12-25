@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m9advancetools.fragment.AppLockFragment;
-import cn.edu.gdmec.android.mobileguard.m9advancetools.fragment.AppUnLockFragment;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment.AppLockFragment;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment.AppUnLockFragment;
 
 public class AppLockActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -110,7 +110,7 @@ public class AppLockActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         @Override
-        public Fragment getItem(int arg0) {
+        public android.support.v4.app.Fragment getItem(int arg0) {
             return mFragments.get(arg0);
         }
 

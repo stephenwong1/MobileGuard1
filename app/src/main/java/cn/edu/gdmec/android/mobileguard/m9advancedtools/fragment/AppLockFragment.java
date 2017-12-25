@@ -28,9 +28,9 @@ import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
-import cn.edu.gdmec.android.mobileguard.m9advancetools.adapter.AppLockAdapter;
-import cn.edu.gdmec.android.mobileguard.m9advancetools.db.dao.AppLockDao;
-import cn.edu.gdmec.android.mobileguard.m9advancetools.service.AppLockService;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.service.AppLockService;
 
 public class AppLockFragment extends Fragment {
     private Context context;
