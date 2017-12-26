@@ -111,6 +111,8 @@
         <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
         <activity android:name=".m9advancedtools.AdvancedToolsActivity"/>
         <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
+        <activity android:name=".m9advancedtools.AppLockActivity"/>
+        <activity android:name=".m9advancedtools.EnterPswActivity"/>
 
         <service
             android:name=".m8trafficmonitor.service.TrafficMonitoringService"

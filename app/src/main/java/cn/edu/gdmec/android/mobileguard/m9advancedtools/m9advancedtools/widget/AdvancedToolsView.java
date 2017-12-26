@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.m9advancedtools.widget;
+package cn.edu.gdmec.android.mobileguard.m9advancedtools.m9advancedtools.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
